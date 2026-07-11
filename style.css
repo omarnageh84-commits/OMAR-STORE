@@ -1,0 +1,119 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Tajawal,sans-serif;
+    background:#f8fafc;
+    color:#1f2937;
+
+}
+
+header{
+
+    background:#2e7d32;
+    color:white;
+
+    text-align:center;
+
+    padding:30px;
+
+}
+
+header h1{
+
+    font-size:38px;
+
+}
+
+header p{
+
+    margin-top:10px;
+
+    font-size:18px;
+
+}
+
+.search-box{
+
+    width:90%;
+    max-width:700px;
+
+    margin:30px auto;
+
+}
+
+.search-box input{
+
+    width:100%;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    border:none;
+
+    font-size:18px;
+
+    outline:none;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+#categories{
+
+    width:90%;
+
+    margin:auto;
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    justify-content:center;
+
+}
+
+.category{
+
+    background:white;
+
+    padding:12px 20px;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.category:hover{
+
+    background:#2e7d32;
+
+    color:white;
+
+}
+
+#products{
+
+    width:90%;
+
+    margin:40px auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+
+}

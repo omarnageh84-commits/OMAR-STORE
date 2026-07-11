@@ -301,15 +301,8 @@ header p {
 }
 
 @keyframes modalFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .close-btn {
@@ -360,4 +353,95 @@ header p {
     text-align: center;
     margin-bottom: 20px;
     font-weight: bold;
+}
+
+/* ========================================= */
+/* 📱 التوافق مع شاشات الموبايل (Responsive) */
+/* ========================================= */
+@media (max-width: 768px) {
+    /* تصغير الهيدر ومربع البحث */
+    header {
+        padding: 20px 10px;
+        width: 96%;
+        margin: 10px auto;
+    }
+    header h1 { font-size: 28px; }
+    header p { font-size: 14px; }
+    #search {
+        width: 95%;
+        padding: 10px 15px;
+        font-size: 14px;
+        margin-top: 15px;
+    }
+
+    /* تحويل التبويبات والأقسام لسحب أفقي زي التطبيقات */
+    .main-tabs, .categories {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        width: 96%;
+        padding-bottom: 10px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* إخفاء شريط التمرير */
+    }
+    .main-tabs::-webkit-scrollbar, .categories::-webkit-scrollbar {
+        display: none;
+    }
+    .main-tabs .tab-btn {
+        flex: 0 0 auto; /* عشان الزرار ميصغرش ويحافظ على حجمه */
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+    .categories button {
+        flex: 0 0 auto;
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    /* عرض المنتجات: عمودين جنب بعض (كروت ثنائية) */
+    .products {
+        width: 96%;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    /* تصغير الكارت عشان يناسب الموبايل */
+    .card {
+        padding: 10px;
+        border-radius: 12px;
+    }
+    .card img {
+        height: 110px;
+        margin-bottom: 10px;
+    }
+    .card h3 {
+        font-size: 13px;
+        margin-bottom: 5px;
+        line-height: 1.3;
+    }
+    .card p {
+        font-size: 10px;
+        margin-bottom: 10px;
+        -webkit-line-clamp: 2; /* عرض سطرين بس من الوصف */
+    }
+    .card h2 {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    .btn-whatsapp, .btn-disabled {
+        padding: 8px 5px;
+        font-size: 11px;
+        border-radius: 8px;
+    }
+
+    /* تظبيط النافذة المنبثقة للموبايل */
+    .modal-content {
+        margin: 15% auto;
+        padding: 15px;
+        width: 90%;
+    }
+    .modal-title { font-size: 20px; }
+    .modal-price { font-size: 20px; }
+    .modal-desc { font-size: 13px; padding: 10px; }
 }

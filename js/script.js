@@ -1,8 +1,8 @@
 const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSDvuSJDjmGBpYHUkj0gbfC9GgEhGftt0_YjfgXcZzEjfkh8r-J6Jpt8aHxTbwgTJb0WMfL8iF9QcEs/pub?output=csv";
 
 let products = [];
-let currentTab = "all";
-let currentCategory = "الكل";
+let currentTab = "all"; 
+let currentCategory = "الكل"; 
 let currentSearch = "";
 
 Papa.parse(csvUrl, {
@@ -53,7 +53,6 @@ function cleanText(text) {
         .replace(/[ة]/g, 'ه');
 }
 
-// دالة الفلترة المزدوجة
 function filterAndDisplay() {
     let filteredProducts = products.filter(product => {
         const isAvailable = (product["متوفر"] || "").trim() !== "لا";
@@ -71,9 +70,9 @@ function filterAndDisplay() {
         const normDesc = cleanText(product["الوصف"] || "");
         const normKeywords = cleanText(product["الكلمات المفتاحية"] || product["الكلمات المفتاحيه"] || "");
 
-        const matchSearch = normName.includes(normSearch) ||
-            normDesc.includes(normSearch) ||
-            normKeywords.includes(normSearch);
+        const matchSearch = normName.includes(normSearch) || 
+                          normDesc.includes(normSearch) || 
+                          normKeywords.includes(normSearch);
 
         return matchTab && matchCategory && matchSearch;
     });
@@ -116,7 +115,6 @@ function setupEventListeners() {
         });
     });
 
-    // أحداث قفل النافذة المنبثقة
     const modal = document.getElementById("productModal");
     const closeBtn = document.querySelector(".close-btn");
     if (closeBtn && modal) {
@@ -175,22 +173,33 @@ function resetFilters() {
     filterAndDisplay();
 }
 
-// إنشاء الكارت وربطة بالنافذة المنبثقة
+// دالة ذكية لمعالجة مسار الصورة (روابط خارجية أو ملفات محلية)
+function getImageUrl(imgName) {
+    if (!imgName) return "images/no-image.png";
+    const cleaned = imgName.trim();
+    // لو الرابط بيبدأ بـ http أو https يبقى رابط مباشر من النت
+    if (cleaned.startsWith("http://") || cleaned.startsWith("https://")) {
+        return cleaned;
+    }
+    // غير كده يبقى ملف مرفوع جوه فولدر images في جيت هب
+    return `images/${cleaned}`;
+}
+
 function createCard(product) {
     const card = document.createElement("div");
     const isAvailable = (product["متوفر"] || "").trim() !== "لا";
 
     card.className = isAvailable ? "card" : "card out-of-stock";
 
-    const imgName = product["الصورة"] || product["الصوره"] || "";
-    const imgPath = imgName ? `images/${imgName}` : "images/no-image.png";
+    const imgName = product["الصورة"] || product["الصوره"] || ""; 
+    const imgPath = getImageUrl(imgName);
     const imgHtml = `<img src="${imgPath}" onerror="this.src='images/no-image.png'" alt="صورة المنتج" class="clickable-img">`;
 
-    const phone = "201000000000";
+    const phone = "201000000000"; 
     const message = `انا عاوز اشتري ${product["الاسم"] || ""}`;
     const waLink = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
-    const btnHtml = isAvailable
+    const btnHtml = isAvailable 
         ? `<a href="${waLink}" target="_blank" class="btn-whatsapp">اطلب عبر واتساب 🟢</a>`
         : `<div class="btn-disabled">🔴 غير متوفر حاليا</div>`;
 
@@ -202,7 +211,6 @@ function createCard(product) {
         ${btnHtml}
     `;
 
-    // ربط الصورة والعنوان بفتح النافذة المنبثقة
     const imgEl = card.querySelector(".clickable-img");
     const titleEl = card.querySelector(".clickable-title");
     if (imgEl) imgEl.addEventListener("click", () => openModal(product, isAvailable, waLink));
@@ -211,16 +219,15 @@ function createCard(product) {
     return card;
 }
 
-// دالة فتح النافذة المنبثقة وعرض التفاصيل الكاملة
 function openModal(product, isAvailable, waLink) {
     const modal = document.getElementById("productModal");
     const modalBody = document.getElementById("modalBody");
     if (!modal || !modalBody) return;
 
-    const imgName = product["الصورة"] || product["الصوره"] || "";
-    const imgPath = imgName ? `images/${imgName}` : "images/no-image.png";
+    const imgName = product["الصورة"] || product["الصوره"] || ""; 
+    const imgPath = getImageUrl(imgName);
 
-    const btnHtml = isAvailable
+    const btnHtml = isAvailable 
         ? `<a href="${waLink}" target="_blank" class="btn-whatsapp">اطلب عبر واتساب 🟢</a>`
         : `<div class="btn-disabled">🔴 غير متوفر حاليا</div>`;
 

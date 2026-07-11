@@ -1,0 +1,363 @@
+body {
+    margin: 0;
+    font-family: Cairo, sans-serif;
+    background: #f0f2f5;
+    direction: rtl;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px;
+    background: white;
+    width: 92%;
+    margin: 20px auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+}
+
+header h1 {
+    color: #5b46f5;
+    font-size: 42px;
+    margin: 0 0 10px 0;
+}
+
+header p {
+    color: #666;
+    font-size: 18px;
+    margin: 0;
+}
+
+#search {
+    width: 80%;
+    max-width: 650px;
+    padding: 15px 20px;
+    border: 2px solid #5b46f5;
+    border-radius: 15px;
+    font-size: 17px;
+    margin-top: 25px;
+    outline: none;
+    text-align: center;
+    transition: .3s;
+}
+
+#search:focus {
+    box-shadow: 0 0 10px rgba(91, 70, 245, 0.2);
+}
+
+/* شريط التبويبات الأفقي الرئيسي */
+.main-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px auto 10px;
+    width: 92%;
+    border-bottom: 2px solid #e1e4e8;
+    padding-bottom: 15px;
+}
+
+.main-tabs .tab-btn {
+    background: white;
+    color: #2d3436;
+    border: 2px solid #5b46f5;
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: .3s;
+    font-weight: 900;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.main-tabs .tab-btn:hover,
+.main-tabs .tab-btn.active {
+    background: #5b46f5;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(91, 70, 245, 0.3);
+}
+
+/* أزرار الأقسام التحتية */
+.categories {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px auto 25px;
+    width: 92%;
+}
+
+.categories button {
+    background: #6c5ce7;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 3px 8px rgba(108, 92, 231, 0.2);
+}
+
+.categories button:hover {
+    background: #5243c0;
+    transform: translateY(-2px);
+}
+
+/* شبكة المنتجات */
+.products {
+    width: 92%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    align-items: stretch;
+}
+
+/* كارت المنتج المرن */
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+    transition: .3s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px solid #eee;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+    border-color: #5b46f5;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.card img:hover {
+    transform: scale(1.03);
+}
+
+.card h3 {
+    margin: 0 0 10px 0;
+    color: #5b46f5;
+    font-size: 20px;
+    text-align: center;
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+.card p {
+    color: #666;
+    margin: 0 0 15px 0;
+    line-height: 1.6;
+    font-size: 15px;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card h2 {
+    color: #111;
+    margin: auto 0 10px 0;
+    font-size: 22px;
+    text-align: center;
+}
+
+.btn-whatsapp {
+    display: block;
+    text-align: center;
+    background: #25d366;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2);
+}
+
+.btn-whatsapp:hover {
+    background: #128c7e;
+    transform: translateY(-2px);
+}
+
+/* === تنسيقات المنتجات الغير متوفرة === */
+.card.out-of-stock {
+    opacity: 0.65;
+    border: 1px dashed #ccc;
+    background: #fafafa;
+}
+
+.card.out-of-stock:hover {
+    transform: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-color: #ccc;
+}
+
+.card.out-of-stock img {
+    filter: grayscale(85%);
+}
+
+.btn-disabled {
+    display: block;
+    text-align: center;
+    background: #dfe6e9;
+    color: #636e72;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: not-allowed;
+    user-select: none;
+}
+
+/* === تنسيقات رسالة القسم الفاضي === */
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin: 20px auto;
+    width: 90%;
+    max-width: 500px;
+    border: 2px dashed #dfe6e9;
+}
+
+.empty-state .icon {
+    font-size: 65px;
+    margin-bottom: 15px;
+}
+
+.empty-state h3 {
+    color: #2d3436;
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.empty-state p {
+    color: #636e72;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.empty-state button {
+    background: #5b46f5;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(91, 70, 245, 0.2);
+}
+
+.empty-state button:hover {
+    background: #4633d6;
+    transform: translateY(-2px);
+}
+
+/* === نافذة التفاصيل المنبثقة (Modal) === */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 25px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: modalFadeIn 0.3s ease;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close-btn {
+    color: #aaa;
+    float: left;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: #e74c3c;
+}
+
+.modal-img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.modal-title {
+    color: #5b46f5;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.modal-desc {
+    color: #444;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    white-space: pre-wrap;
+    text-align: right;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+}
+
+.modal-price {
+    color: #111;
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}

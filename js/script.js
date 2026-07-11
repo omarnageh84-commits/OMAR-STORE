@@ -195,7 +195,7 @@ function createCard(product) {
     const imgPath = getImageUrl(imgName);
     const imgHtml = `<img src="${imgPath}" onerror="this.src='images/no-image.png'" alt="صورة المنتج" class="clickable-img">`;
 
-    const phone = "201000000000"; 
+    const phone = "01099478956"; 
     const message = `انا عاوز اشتري ${product["الاسم"] || ""}`;
     const waLink = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
